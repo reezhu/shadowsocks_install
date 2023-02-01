@@ -6,7 +6,7 @@
 # https://github.com/teddysun/v2ray-plugin
 # https://github.com/teddysun/xray-plugin
 
-FROM --platform=${TARGETPLATFORM} debian:buster-slim
+FROM --platform=${TARGETPLATFORM} debian:bullseye-slim
 LABEL maintainer="Teddysun <i@teddysun.com>"
 
 ARG TARGETPLATFORM
@@ -31,4 +31,4 @@ RUN set -ex \
 
 VOLUME /etc/shadowsocks-rust
 ENV TZ=Asia/Shanghai
-CMD [ "/usr/bin/ssserver", "-c", "/etc/shadowsocks-rust/config.json" ]
+CMD [ "/usr/bin/ssservice", "server", "--log-without-time", "-c", "/etc/shadowsocks-rust/config.json" ]
